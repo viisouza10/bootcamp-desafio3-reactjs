@@ -29,15 +29,14 @@ function App() {
 
       alert("Projeto cadastrado com sucesso");
     } catch (error) {
-      console.error(error);
       alert("Não foi possível cadastrar projeto");
     }
   }
 
-  async function handleRemoveRepository(id, index) {
+  async function handleRemoveRepository(id) {
     try {
       await Api.delete(`repositories/${id}`);
-      repositories.splice(index, 1);
+      setRepositories(repositories.filter((repository) => repository.id != id));
     } catch (error) {}
   }
 
